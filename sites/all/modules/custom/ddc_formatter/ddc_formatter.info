@@ -1,0 +1,8 @@
+name = ddc_formatter
+core = 7.x
+package = Features
+dependencies[] = ctools
+dependencies[] = custom_formatters
+features[ctools][] = custom_formatters:custom_formatters:2
+features[features_api][] = api:2
+features[formatters][] = author
