@@ -1,0 +1,45 @@
+<?php
+/**
+ * @file
+ * Code for the ddc_featured feature.
+ */
+
+include_once 'ddc_featured.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function ddc_featured_menu() {
+  $items['featured'] = array(
+    'title' => t('Featured Articles'),
+    'page callback' => 'ddc_featured_page',
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+    'menu_name' => 'main-menu',
+    'weight' => 2,
+  );
+  return $items;
+}
+
+/**
+ * Page callback for DDC Filtered Listing Page.
+ */
+function ddc_featured_page() {
+  $article_listing = NULL;
+  $filtered_listing_view = views_get_view('featured_listing');
+  if ( is_object($filtered_listing_view) ) {
+    $filtered_listing_view->set_display('master');
+    $filtered_listing_view->pre_execute();
+    $article_listing = $filtered_listing_view->render('master');
+  }
+  return theme('ddc_featured', array('article_listing' => $article_listing));
+}
+
+function ddc_featured_theme() {
+  return array(
+    'ddc_featured' => array(
+      'variables' => array('article_listing' => NULL),
+      'template' => 'templates/ddc-featured'
+    ),
+  );
+}

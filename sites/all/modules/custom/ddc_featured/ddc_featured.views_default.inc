@@ -1,21 +1,21 @@
 <?php
 /**
  * @file
- * ddc_homepage.views_default.inc
+ * ddc_featured.views_default.inc
  */
 
 /**
  * Implements hook_views_default_views().
  */
-function ddc_homepage_views_default_views() {
+function ddc_featured_views_default_views() {
   $export = array();
 
   $view = new view();
-  $view->name = 'homepage_listing';
+  $view->name = 'featured_listing';
   $view->description = '';
   $view->tag = 'default';
   $view->base_table = 'node';
-  $view->human_name = 'Homepage listing';
+  $view->human_name = 'Featured listing';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -50,12 +50,14 @@ function ddc_homepage_views_default_views() {
   $handler->display->display_options['filters']['status']['value'] = 1;
   $handler->display->display_options['filters']['status']['group'] = 1;
   $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
-  /* Filter criterion: Content: Promoted to front page */
-  $handler->display->display_options['filters']['promote']['id'] = 'promote';
-  $handler->display->display_options['filters']['promote']['table'] = 'node';
-  $handler->display->display_options['filters']['promote']['field'] = 'promote';
-  $handler->display->display_options['filters']['promote']['value'] = '1';
-  $export['homepage_listing'] = $view;
+  /* Filter criterion: Content: Featured Article (field_featured_value) */
+  $handler->display->display_options['filters']['field_featured_value']['id'] = 'field_featured_value';
+  $handler->display->display_options['filters']['field_featured_value']['table'] = 'field_data_field_featured';
+  $handler->display->display_options['filters']['field_featured_value']['field'] = 'field_featured_value';
+  $handler->display->display_options['filters']['field_featured_value']['value'] = array(
+    1 => '1',
+  );
+  $export['featured_listing'] = $view;
 
   return $export;
 }
