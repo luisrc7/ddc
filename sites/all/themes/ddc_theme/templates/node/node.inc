@@ -29,4 +29,17 @@ function ddc_theme_preprocess_node__article__teaser(&$variables) {
 
   // Create linked title.
   $variables['linked_title'] = l($variables['title'], 'node/' . $variables['nid']);
+
+  // Create sub-title.
+  $field_subtitle = field_get_items('node', $variables['node'], 'field_subtitle');
+  $variables['sub_title'] = $field_subtitle[0]['safe_value'];
+
+}
+
+function ddc_theme_preprocess_node__article__full(&$variables) {
+
+  // Create sub-title.
+  $field_subtitle = field_get_items('node', $variables['node'], 'field_subtitle');
+  $variables['sub_title'] = $field_subtitle[0]['safe_value'];
+
 }
