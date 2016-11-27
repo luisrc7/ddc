@@ -1,0 +1,66 @@
+<?php
+
+
+/**
+ * Implements hook_permission().
+ */
+function ddc_hidden_permission() {
+  return array(
+    'view hidden articles' => array(
+      'title' => t('View Hidden Articles'),
+      'description' => t('Access Articles content before Hidden Date'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_node_access().
+ */
+function ddc_hidden_node_access($node, $op, $account) {
+  switch ($op) {
+    case 'view':
+      if ($node->type === 'article') {
+        $node_wrapper = entity_metadata_wrapper('node', $node);
+        $hidden_date = $node_wrapper->field_hidden_date->raw();
+        if (!user_access('view hidden articles', $account) && !empty($hidden_date) && time() < $hidden_date) {
+          return NODE_ACCESS_DENY;
+        }
+      }
+      break;
+    default:
+      return NODE_ACCESS_IGNORE;
+  }
+  return NODE_ACCESS_IGNORE;
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function ddc_hidden_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'ddc_hidden'),
+  );
+}
+
+/**
+ * Implements hook_views_query_alter().
+ */
+function ddc_hidden_views_query_alter(&$view, &$query) {
+  global $user;
+  switch ($view->name) {
+    case 'homepage_listing':
+    case 'filtered_listing':
+    case 'featured_listing':
+      if (!user_access('view hidden articles', $user)) {
+        // Add hidden date table
+        $query->add_table('field_data_field_hidden_date');
+        // Add condition if date is in the future or date is not set
+        $conditions = db_or()
+          ->condition('field_data_field_hidden_date.field_hidden_date_value', time(), '<')
+          ->isNull('field_data_field_hidden_date.field_hidden_date_value');
+        $query->add_where(1, $conditions);
+      }
+      break;
+  }
+}
