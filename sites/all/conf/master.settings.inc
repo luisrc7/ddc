@@ -38,12 +38,17 @@ $conf['master_modules'] = array(
     'strongarm',
     'features',
     'fe_block',
+    'date',
+    'fe_date',
+    'custom_formatters',
 
     //Features
     'ddc_article',
     'ddc_block',
     'ddc_common',
+    'ddc_date',
     'ddc_filter',
+    'ddc_formatter',
     'ddc_homepage',
     'ddc_image',
     'ddc_permission',
