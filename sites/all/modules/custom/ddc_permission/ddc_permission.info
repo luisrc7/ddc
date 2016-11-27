@@ -3,4 +3,6 @@ core = 7.x
 package = Features
 dependencies[] = features
 features[features_api][] = api:2
+features[user_permission][] = view hidden articles
 features[user_role][] = administrator
+features_exclude[dependencies][ddc_hidden] = ddc_hidden
