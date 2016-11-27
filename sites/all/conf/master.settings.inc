@@ -38,6 +38,7 @@ $conf['master_modules'] = array(
     'strongarm',
     'features',
     'fe_block',
+    'date',
 
     //Features
     'ddc_article',
