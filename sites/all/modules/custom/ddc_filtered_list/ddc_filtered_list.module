@@ -1,0 +1,46 @@
+<?php
+/**
+ * @file
+ * Code for the ddc_filtered_list feature.
+ */
+
+include_once 'ddc_filtered_list.features.inc';
+
+/**
+ * Implements hook_menu().
+ */
+function ddc_filtered_list_menu() {
+  $items['filtered-list'] = array(
+    'title' => t('Filtered List'),
+    'page callback' => 'ddc_filtered_list_page',
+    'access callback' => TRUE,
+    'type' => MENU_NORMAL_ITEM,
+    'menu_name' => 'main-menu',
+    'weight' => 1,
+  );
+  return $items;
+}
+
+/**
+ * Page callback for DDC Filtered Listing Page.
+ */
+function ddc_filtered_list_page() {
+  $article_listing = NULL;
+  $filtered_listing_view = views_get_view('filtered_listing');
+  if ( is_object($filtered_listing_view) ) {
+    $filtered_listing_view->override_path = $_GET['q']; // Redirect to current page.
+    $filtered_listing_view->set_display('master');
+    $filtered_listing_view->pre_execute();
+    $article_listing = $filtered_listing_view->render('master');
+  }
+  return theme('ddc_filtered_list', array('article_listing' => $article_listing));
+}
+
+function ddc_filtered_list_theme() {
+  return array(
+    'ddc_filtered_list' => array(
+      'variables' => array('article_listing' => NULL),
+      'template' => 'templates/ddc-filtered-list'
+    ),
+  );
+}
