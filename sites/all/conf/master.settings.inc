@@ -41,6 +41,7 @@ $conf['master_modules'] = array(
     'date',
     'fe_date',
     'custom_formatters',
+    'entity',
 
     //Features
     'ddc_article',
@@ -51,6 +52,7 @@ $conf['master_modules'] = array(
     'ddc_filter',
     'ddc_filtered_list',
     'ddc_formatter',
+    'ddc_hidden',
     'ddc_homepage',
     'ddc_image',
     'ddc_permission',
