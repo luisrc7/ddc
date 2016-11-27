@@ -29,11 +29,26 @@ function ddc_image_image_default_styles() {
   $styles['teaser'] = array(
     'label' => 'Teaser',
     'effects' => array(
-      2 => array(
+      1 => array(
         'name' => 'image_scale_and_crop',
         'data' => array(
           'width' => 110,
           'height' => 110,
+        ),
+        'weight' => 1,
+      ),
+    ),
+  );
+
+   // Exported image style: teaser.
+  $styles['author'] = array(
+    'label' => 'Author (70x70)',
+    'effects' => array(
+      1 => array(
+        'name' => 'image_scale_and_crop',
+        'data' => array(
+          'width' => 70,
+          'height' => 70,
         ),
         'weight' => 1,
       ),

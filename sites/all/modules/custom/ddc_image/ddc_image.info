@@ -5,3 +5,4 @@ dependencies[] = image
 features[features_api][] = api:2
 features[image][] = full
 features[image][] = teaser
+features[image][] = author

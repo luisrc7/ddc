@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ddc_formatter feature.
+ */
+
+include_once 'ddc_formatter.features.inc';

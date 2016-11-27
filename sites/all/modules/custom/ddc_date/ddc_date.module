@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the ddc_date feature.
+ */
+
+include_once 'ddc_date.features.inc';

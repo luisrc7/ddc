@@ -14,6 +14,8 @@
         </div>
         <div class="media-body">
           <h1><?php print $linked_title; ?></h1>
+          <h4><?php print $sub_title; ?></h4>
+          <?php print render($content['field_publication_date']); ?>
           <?php print render($content['body']); ?>
         </div>
       </div>
