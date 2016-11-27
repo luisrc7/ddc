@@ -26,20 +26,26 @@ function ddc_theme_preprocess_node(&$variables) {
 }
 
 function ddc_theme_preprocess_node__article__teaser(&$variables) {
-
   // Create linked title.
   $variables['linked_title'] = l($variables['title'], 'node/' . $variables['nid']);
 
-  // Create sub-title.
-  $field_subtitle = field_get_items('node', $variables['node'], 'field_subtitle');
-  $variables['sub_title'] = $field_subtitle[0]['safe_value'];
-
+  // Common Article implementations.
+  _article_common($variables);
 }
 
 function ddc_theme_preprocess_node__article__full(&$variables) {
+  // Common Article implementations.
+  _article_common($variables);
+}
 
+function _article_common(&$variables) {
   // Create sub-title.
   $field_subtitle = field_get_items('node', $variables['node'], 'field_subtitle');
   $variables['sub_title'] = $field_subtitle[0]['safe_value'];
 
+  // Add Featured class.
+  $field_featured = field_get_items('node', $variables['node'], 'field_featured');
+  if (isset($field_featured) && $field_featured[0]['value'] == 1) {
+    $variables['classes_array'][] = 'featured';
+  }
 }
