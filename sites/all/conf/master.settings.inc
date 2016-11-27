@@ -48,6 +48,7 @@ $conf['master_modules'] = array(
     'ddc_common',
     'ddc_date',
     'ddc_filter',
+    'ddc_filtered_list',
     'ddc_formatter',
     'ddc_homepage',
     'ddc_image',
