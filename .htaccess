@@ -147,8 +147,3 @@ DirectoryIndex index.php index.html index.htm
   # Disable content sniffing, since it's an attack vector.
   Header always set X-Content-Type-Options nosniff
 </IfModule>
-
-# Server force php 5.6
-<FilesMatch \.php$>
-    SetHandler php56-cgi
-</FilesMatch>
