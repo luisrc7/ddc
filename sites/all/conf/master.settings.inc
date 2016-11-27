@@ -39,6 +39,8 @@ $conf['master_modules'] = array(
     'features',
     'fe_block',
     'date',
+    'fe_date',
+    'custom_formatters',
 
     //Features
     'ddc_article',
