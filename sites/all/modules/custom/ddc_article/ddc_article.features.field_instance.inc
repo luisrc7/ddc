@@ -57,7 +57,7 @@ function ddc_article_field_default_field_instances() {
         'summary_rows' => 5,
       ),
       'type' => 'text_textarea_with_summary',
-      'weight' => 3,
+      'weight' => 4,
     ),
   );
 
@@ -86,7 +86,7 @@ function ddc_article_field_default_field_instances() {
         'label' => 'above',
         'settings' => array(),
         'type' => 'hidden',
-        'weight' => 0,
+        'weight' => 6,
       ),
     ),
     'entity_type' => 'node',
@@ -104,6 +104,57 @@ function ddc_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
+      'weight' => 3,
+    ),
+  );
+
+  // Exported field_instance: 'node-article-field_featured_article'
+  $field_instances['node-article-field_featured'] = array(
+    'bundle' => 'article',
+    'default_value' => array(
+      0 => array(
+        'value' => 0,
+      ),
+    ),
+    'deleted' => 0,
+    'description' => '',
+    'display' => array(
+      'default' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_key',
+        'weight' => 6,
+      ),
+      'full' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_key',
+        'weight' => 6,
+      ),
+      'teaser' => array(
+        'label' => 'hidden',
+        'module' => 'list',
+        'settings' => array(),
+        'type' => 'list_key',
+        'weight' => 5,
+      ),
+    ),
+    'entity_type' => 'node',
+    'field_name' => 'field_featured',
+    'label' => 'Featured Article',
+    'required' => 0,
+    'settings' => array(
+      'user_register_form' => FALSE,
+    ),
+    'widget' => array(
+      'active' => 1,
+      'module' => 'options',
+      'settings' => array(
+        'display_label' => 1,
+      ),
+      'type' => 'options_onoff',
       'weight' => 2,
     ),
   );
@@ -167,7 +218,7 @@ function ddc_article_field_default_field_instances() {
         'progress_indicator' => 'throbber',
       ),
       'type' => 'image_image',
-      'weight' => 5,
+      'weight' => 6,
     ),
   );
 
@@ -244,7 +295,7 @@ function ddc_article_field_default_field_instances() {
         'year_range' => '-3:+3',
       ),
       'type' => 'date_select',
-      'weight' => 6,
+      'weight' => 7,
     ),
   );
 
@@ -339,7 +390,7 @@ function ddc_article_field_default_field_instances() {
         'size' => 60,
       ),
       'type' => 'taxonomy_autocomplete',
-      'weight' => 4,
+      'weight' => 5,
     ),
   );
 
@@ -348,6 +399,7 @@ function ddc_article_field_default_field_instances() {
   t('Author');
   t('Body');
   t('Enter a comma-separated list of words to describe your content.');
+  t('Featured Article');
   t('Image');
   t('Published');
   t('Subtitle');
