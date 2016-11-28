@@ -11,7 +11,7 @@ include_once 'ddc_featured.features.inc';
  */
 function ddc_featured_menu() {
   $items['featured'] = array(
-    'title' => t('Featured Articles'),
+    'title' => 'Featured Articles',
     'page callback' => 'ddc_featured_page',
     'access callback' => TRUE,
     'type' => MENU_NORMAL_ITEM,
