@@ -11,7 +11,7 @@ include_once 'ddc_filtered_list.features.inc';
  */
 function ddc_filtered_list_menu() {
   $items['filtered-list'] = array(
-    'title' => t('Filtered List'),
+    'title' => 'Filtered List',
     'page callback' => 'ddc_filtered_list_page',
     'access callback' => TRUE,
     'type' => MENU_NORMAL_ITEM,
